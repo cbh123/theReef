@@ -1,0 +1,28 @@
+body {
+    background-image: url("images/reef3.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: #FFE450;
+    
+}
+
+#headerDiv {
+    font-family: "Bangers";
+    color: #3C4653;
+    text-align: center;
+    margin-top:25%;
+}
+
+#header {
+    font-family: "Bangers";
+    color: #3C4653;
+    font-size: 700%;
+    text-decoration: none;
+}
+
+#header:hover {
+    color:pink;
+    text-shadow: 2px 2px #ff0000;
+}
+
+
