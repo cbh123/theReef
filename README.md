@@ -1,2 +1,2 @@
-# theReef
+# The Reef
 The Reef website
