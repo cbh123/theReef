@@ -22,7 +22,7 @@
     <h2>Book A Visit</h2>
     <br>
     <br>
-    <div id="buttons">
+    <div id="reviewSection">
   
         <form>
             <p>Name</p>
@@ -97,6 +97,7 @@ function addStay(){
         db.collection("bookings").add({
         name: $("#name").val(),
         date: $("#date").val(),
+        email: $("email").val(),
         fear: $("#fear").val(),
         timestamp: timeStamp
         });

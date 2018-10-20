@@ -44,7 +44,7 @@ input {
 
 #bigBox {
     height: 200px;
-    width: 400px;
+    width: 70%;
     
 }
 
@@ -88,6 +88,19 @@ button:hover{
     margin-left: auto;
     margin-right: auto;
     width:90%;
+}
+
+#reviewSection {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width:60%;
+    padding: 10px;
+    margin-bottom: 10%;
+    background: lightBlue;
+    border-radius: 10px;
+    box-shadow: 6px 10px 22px -13px rgba(0,0,0,0.75);
+    
 }
 
 #backButton {
@@ -255,7 +268,7 @@ button:hover{
     color:#17FFAF;
 }
 #about {
-    color:#FFE450;
+    color:blue;
 }
 #suggestions {
     color:coral;
@@ -276,5 +289,5 @@ button:hover{
     color:coral;
 }
 #seeReviews {
-    color:blue;
+    color:#FFE450;
 }

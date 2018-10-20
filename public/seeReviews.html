@@ -24,9 +24,14 @@
 
     <h2>Read our Reviews!</h2>
     
-    <div id="buttons">
+    <div id="reviewSection">
     
+        
     </div>
+    
+    
+    
+    
     
 </body>
 
@@ -76,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
        
         
         for (var i = 0; i < arrayLength; i++) {
-            var div = document.getElementById("buttons");
+            var div = document.getElementById("reviewSection");
             
             var name = ("Reviewer: " + names[i]);
             var date = (dates[i]); 
@@ -84,8 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
             var stars = ("Stars: " + starVal[i]); 
             
             div.innerHTML += (name + "<br>" + review + "<br>" + stars + "<br><br><br>" );
-
         }
+        div.innerHTML += ("<a href=\"suggestions.html\"><em>Don't forget to leave us a review!</em></a>");
         
     })
     .catch(function(error) {
