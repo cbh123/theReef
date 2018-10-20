@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The Reef</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/menu.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+      <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+
+</head> 
+
+<body>
+    <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
+    
+      <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
+    
+    
+    <br><br><br><br><br><br><br>
+    
+    
+
+    <h2>Charlie &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;Gilad</h2>
+        
+    
+    
+    
+    <div id="tentacles">
+        
+        <img id="leftTent" onclick="swap()" src="css/images/leftTent.png">
+        <img id="rightTent" onclick="swap()" src="css/images/rightTent.png">
+    
+    </div>
+    
+    <br> 
+    <br> 
+ 
+    <h2 id="status"></h2>
+    
+   
+    
+    
+</body>
+
+
+<script>
+ 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
+    authDomain: "thereef-6a3df.firebaseapp.com",
+    databaseURL: "https://thereef-6a3df.firebaseio.com",
+    projectId: "thereef-6a3df",
+    storageBucket: "thereef-6a3df.appspot.com",
+    messagingSenderId: "863599769009"
+  };
+  firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Disable deprecated features
+db.settings({
+  timestampsInSnapshots: true
+});
+    
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // below code gets whether equal to charlie or gilad
+    var docRef = db.collection("dinner").doc("whoPaidLast");
+    docRef.get().then(function(doc) {
+            var who = doc.data().name;
+            if (who == "Charlie"){
+                $("#leftTent").show();
+                $("#rightTent").hide();    
+                $("#status").html("Gilad-fishy paid last time.");
+                console.log("Charlie paid last, so loading left tentacle.");
+            } else {
+                $("#leftTent").hide();
+                $("#rightTent").show(); 
+                $("#status").html("Charlie-fishy paid last time.");
+                console.log("Gilad paid last, so loading right tentacle.");
+                
+            }
+        })
+    });
+    
+    
+function setDB(new_name) {
+    db.collection("dinner").doc("whoPaidLast").update({
+        name: new_name,
+    });
+}
+    
+function swap(){
+    
+    
+    // below code gets whether equal to charlie or gilad, swaps the tentacle, and updates the db
+    var docRef = db.collection("dinner").doc("whoPaidLast");
+    docRef.get().then(function(doc) {
+            var who = doc.data().name;
+            
+            // if last paid was charlie, swap the arrows and set last paid to g
+            if (who == "Charlie"){
+                $("#leftTent").hide();
+                $("#rightTent").show();   
+                setDB("Gilad");
+                $("#status").html("Thanks for paying, Charlie Fish!");
+                $("#status").css("color", "green");
+        
+                console.log("Charlie just paid, so loading right tentacle, " + 
+                            "and setting database to G.");
+                
+            // if last paid was gilad, swap arrows and set last paid to c
+            } else {
+                $("#leftTent").show();
+                $("#rightTent").hide(); 
+                setDB("Charlie");
+                $("#status").html("Thanks for paying, Gilard Fish!");
+                $("#status").css("color", "green");
+                
+                console.log("Gilad just paid, so loading left tentacle." + 
+                           " and setting database to C.");
+                
+            }
+        });
+}
+    
+    
+</script>

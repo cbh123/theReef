@@ -1,0 +1,280 @@
+body {
+    background-image: url("images/menuBackground.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: #FFE450;
+    font-family: "Rubik";
+}
+
+.center{
+width: 150px;
+  margin: 40px auto;
+  
+}
+
+#leftTent, #rightTent {
+    margin: auto;
+    display:none;
+    width: 100px;
+}
+
+#tentacles {
+    position: fixed;
+    top: 18%;
+    left: 45%;
+}
+
+h3 {
+    color: white;
+}
+
+p {
+    color: black;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+input {
+    font-size: 20px;
+}
+
+#bigBox {
+    height: 200px;
+    width: 400px;
+    
+}
+
+#submitButton {
+    width: 200px;
+    height: 80px;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 1000;
+    background: #0090EA;
+    border: none;
+    border-radius: 20px;
+}
+
+#successBox {
+    color: lightgreen;
+}
+
+#errorBox {
+    color: red;
+}
+
+button {
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 1000;
+    background: #0090EA;
+    border: none;
+    border-radius: 20px;
+}
+
+button:hover{
+    box-shadow: 6px 10px 22px -13px rgba(0,0,0,0.75);
+    
+}
+
+#buttons {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width:90%;
+}
+
+#backButton {
+    height: 100px;
+    top: 5px;
+    position: absolute;
+}
+
+#backButton2 {
+    height: 100px;
+}
+
+
+
+/* The animation code */
+@keyframes swim {
+    from {top:50%; left:0%}
+    to {top:40%; left:1000%}
+}
+
+@keyframes bubbleUp {
+    from {top:100%}
+    to {top:-40%}
+}
+
+@keyframes bubbleUp2 {
+    from {top:100%}
+    to {top:-40%}
+}
+
+@keyframes bubbleUp3 {
+    from {top:100%}
+    to {top:-40%}
+}
+
+@keyframes spin {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+#octopus, #coral, #crab {
+  -webkit-animation-name: wiggle;
+  -ms-animation-name: wiggle;
+  -ms-animation-duration: 1000ms;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+    -webkit-animation-delay:8s;
+}
+
+@-webkit-keyframes wiggle {
+  0% {-webkit-transform: rotate(10deg);}
+  25% {-webkit-transform: rotate(-10deg);}
+  50% {-webkit-transform: rotate(20deg);}
+  75% {-webkit-transform: rotate(-5deg);}
+  100% {-webkit-transform: rotate(0deg);}
+}
+
+@-ms-keyframes wiggle {
+  0% {-ms-transform: rotate(1deg);}
+  25% {-ms-transform: rotate(-1deg);}
+  50% {-ms-transform: rotate(1.5deg);}
+  75% {-ms-transform: rotate(-5deg);}
+  100% {-ms-transform: rotate(0deg);}
+}
+
+@keyframes wiggle {
+  0% {transform: rotate(10deg);}
+  25% {transform: rotate(-10deg);}
+  50% {transform: rotate(20deg);}
+  75% {transform: rotate(-5deg);}
+  100% {transform: rotate(0deg);}
+}
+
+/* Animation Images */
+#fishies {
+    position: fixed;
+    top: 50%;
+    left:0%;
+    width: 100px;
+    animation-name: swim;
+    animation-delay: 1s;
+    animation-duration: 40s;
+    animation-iteration-count: 1;
+}
+
+#bubble {
+    position: fixed;
+    top: 100%;
+    left:50%;
+    width: 100px;
+    animation-name: bubbleUp;
+    animation-delay: 10s;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+
+#bubble2 {
+    position: fixed;
+    top: 100%;
+    left:30%;
+    width: 100px;
+    animation-name: bubbleUp2;
+    animation-delay: 20s;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+
+
+#bubble3 {
+    position: fixed;
+    top: 100%;
+    left:70%;
+    width: 100px;
+    animation-name: bubbleUp3;
+    animation-delay: 30s;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+#octopus {
+    position: fixed;
+    top: 80%;
+    left:20%;
+    width: 100px;
+    animation-name:wiggle;
+}
+
+#coral {
+    position: fixed;
+    top: 85%;
+    left:80%;
+    width: 100px;
+    animation-name:wiggle;
+}
+
+#crab {
+    position: fixed;
+    top: 85%;
+    left:90%;
+    width: 100px;
+    animation-name:wiggle;
+}
+
+
+    
+/*Box Font Colors*/
+#book {
+    color:#17FFAF;
+}
+#about {
+    color:#FFE450;
+}
+#suggestions {
+    color:coral;
+}
+#apply {
+    color:orange;
+}
+#fish {
+    color:white;
+}
+#water {
+    color:lawngreen;
+}
+#dinner {
+    color:#FFE450;;
+}
+#leaderboard{
+    color:coral;
+}
+#seeReviews {
+    color:blue;
+}

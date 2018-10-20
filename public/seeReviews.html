@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The Reef</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/menu.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+      <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+
+</head> 
+
+<body>
+    <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
+    
+    <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
+    
+
+    <h2>Read our Reviews!</h2>
+    
+    <div id="buttons">
+    
+    </div>
+    
+</body>
+
+
+<script>
+ 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
+    authDomain: "thereef-6a3df.firebaseapp.com",
+    databaseURL: "https://thereef-6a3df.firebaseio.com",
+    projectId: "thereef-6a3df",
+    storageBucket: "thereef-6a3df.appspot.com",
+    messagingSenderId: "863599769009"
+  };
+  firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Disable deprecated features
+db.settings({
+  timestampsInSnapshots: true
+});
+    
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    db.collection("reviews")
+    .get()
+    .then(function(querySnapshot) {
+        var names = [];
+        var dates = [];
+        var reviews = [];
+        var starVal = [];
+        
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            names.push(doc.data().name);
+            dates.push(doc.data().date);
+            reviews.push(doc.data().comment);
+            starVal.push(doc.data().stars);
+        });
+        
+        
+        var arrayLength = names.length;
+       
+        
+        for (var i = 0; i < arrayLength; i++) {
+            var div = document.getElementById("buttons");
+            
+            var name = ("Reviewer: " + names[i]);
+            var date = (dates[i]); 
+            var review = ("\"<em>" + reviews[i] + "</em>\""); 
+            var stars = ("Stars: " + starVal[i]); 
+            
+            div.innerHTML += (name + "<br>" + review + "<br>" + stars + "<br><br><br>" );
+
+        }
+        
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+});
+    
+</script>

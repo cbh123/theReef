@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The Reef</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/menu.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       
+        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+
+</head> 
+
+<body>
+    <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
+    
+    <h2>Review The Reef</h2>
+    <br>
+    <br>
+    <div id="buttons">
+        <form>
+            <p>Name</p>
+            <input id="name" type="text">
+            <p>Review</p>
+            <input id="bigBox" type="text">
+            <p>Date of Stay</p>
+            <input id="date" type="date">
+            <p>How Many Stars?</p>
+            <input type="text" id="stars">
+            <br>     <br>
+              
+    </form>
+    <p id="errorBox"></p>
+    <p id="successBox"></p>
+    <button id="submitButton" onclick="addReview()">Submit</button>
+   
+    
+    
+    
+    
+    </div>
+    
+ 
+        
+    
+    
+ 
+  
+    
+    
+</body>
+
+<script>
+    
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
+    authDomain: "thereef-6a3df.firebaseapp.com",
+    databaseURL: "https://thereef-6a3df.firebaseio.com",
+    projectId: "thereef-6a3df",
+    storageBucket: "thereef-6a3df.appspot.com",
+    messagingSenderId: "863599769009"
+  };
+  firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Disable deprecated features
+db.settings({
+  timestampsInSnapshots: true
+});
+    
+function addReview(){
+    var timeStamp = Date.now();
+    
+    if ($("#bigBox").val() == "") {
+        $("#errorBox").html("Please enter a review");
+    } else if ($("#stars").val() == "") {
+        $("#errorBox").html("Please enter a number of stars.");
+    } else {
+        $("#errorBox").hide();
+        var theName = $("#name").val();
+        db.collection("reviews/").add({
+        name: $("#name").val(),
+        comment: $("#bigBox").val(),
+        date: $("#date").val(),
+        stars: $("#stars").val(),
+        timestamp: timeStamp
+        })
+        console.log("success");
+        $("#successBox").html("Thanks for posting a review!");
+        window.alert("Thanks for posting a review! - The Reeflings");
+
+    }
+    
+  
+}
+    
+
+    
+</script>
