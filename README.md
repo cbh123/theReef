@@ -1,2 +1,2 @@
 # The Reef
-The Reef website
+A website for our apartment!
