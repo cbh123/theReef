@@ -10,34 +10,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
       <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
 
-</head> 
+</head>
 
 <body>
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
+
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
+
 
     <h2>SECRET: SEE BOOKINGS / FEARS</h2>
-    
+
     <div id="reviewSection">
-    
-        
+
+
     </div>
-    
-    
-    
-    
-    
+
+
+
+
+
 </body>
 
 
 <script>
- 
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
@@ -56,10 +56,10 @@ var db = firebase.firestore();
 db.settings({
   timestampsInSnapshots: true
 });
-    
+
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     db.collection("bookings")
     .get()
     .then(function(querySnapshot) {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var dates = [];
         var fears = [];
         var times = [];
-        
+
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             names.push(doc.data().name);
@@ -75,24 +75,23 @@ document.addEventListener("DOMContentLoaded", function() {
             fears.push(doc.data().fear);
             times.push(doc.data().timestamp);
         });
-        
-        
+
+
         var arrayLength = names.length;
        
-        
         for (var i = 0; i < arrayLength; i++) {
             var div = document.getElementById("reviewSection");
             var name = ("Name: " + names[i]);
-            var date = ("Date of booking: " + dates[i]); 
-            var fear = ("Fear: " + fears[i]); 
-            
+            var date = ("Date of booking: " + dates[i]);
+            var fear = ("Fear: " + fears[i]);
+
             div.innerHTML += (name + "<br>" +  date + "<br>" + fear + "<br><br>" );
         }
-        
+
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
 });
-    
+
 </script>

@@ -10,49 +10,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-      <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
 
-</head> 
+</head>
 
 <body>
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
+
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
-    
+
+
     <br><br><br><br><br><br><br>
-    
-    
+
+
 
     <h2>Charlie &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;Gilad</h2>
-        
-    
-    
-    
+
+
+
     <div id="tentacles">
-        
+
         <img id="leftTent" src="css/images/leftTent.png">
         <img id="rightTent" src="css/images/rightTent.png">
-    
+
     </div>
-    
-    <br> 
-    <br> 
- 
+
+    <br>
+    <br>
+
     <h2 id="status"></h2>
-    
-   
-    
-    
+
+
+
+
 </body>
 
 
 <script>
- 
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
@@ -71,27 +69,27 @@ var db = firebase.firestore();
 db.settings({
   timestampsInSnapshots: true
 });
-    
+
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     // below code gets whether equal to charlie or gilad
     var docRef = db.collection("dinner").doc("whoPaidLast");
     docRef.get().then(function(doc) {
             var who = doc.data().name;
             if (who == "Charlie"){
                 $("#leftTent").show();
-                $("#rightTent").hide();    
+                $("#rightTent").hide();
                 $("#status").html("Gilad-fishy paid last time.");
                 console.log("Charlie paid last, so loading left tentacle.");
             } else {
                 $("#leftTent").hide();
-                $("#rightTent").show(); 
+                $("#rightTent").show();
                 $("#status").html("Charlie-fishy paid last time.");
                 console.log("Gilad paid last, so loading right tentacle.");
-                
+
             }
         })
     });
-    
+
 </script>

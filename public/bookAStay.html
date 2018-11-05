@@ -10,8 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
 
 </head>
@@ -81,9 +80,13 @@ db.settings({
   timestampsInSnapshots: true
 });
 
+/**
+add stay to database.
+**/
 function addStay(){
     var timeStamp = Date.now();
 
+    // check to confirm necessary boxes are filled
     if ($("#name").val() == "") {
         $("#errorBox").html("Please enter a name.");
     } else if ($("#date").val() == "") {
@@ -91,18 +94,23 @@ function addStay(){
     } else if ($("#fear").val() == "") {
         $("#errorBox").html("Please enter a fear. Be truthful");
     } else {
-//
-
         $("#errorBox").hide();
-        db.collection("bookings").add({
-        name: $("#name").val(),
-        date: $("#date").val(),
-        fear: $("#fear").val(),
-        timestamp: timeStamp
-        });
-        console.log("success");
-        $("#successBox").html("Thanks for booking a visit!");
-        window.alert("Thank you for booking a stay. We shall see you on " + $("#date").val() + ". Please note that the current password is: TENTACLES.");
+
+    // add booking info to db
+    db.collection("bookings").add({
+      name: $("#name").val(),
+      date: $("#date").val(),
+      email: $("#email").val(),
+      fear: $("#fear").val(),
+      timestamp: timeStamp
+    });
+
+    // success infro
+    console.log("success");
+    $("#successBox").html("Thanks for booking a visit!");
+
+    // window alert
+    window.alert("Thank you for booking a stay. We shall see you on " + $("#date").val() + ". Please note that the current password is: TENTACLES.");
 
     }
 
