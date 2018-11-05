@@ -10,34 +10,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
       <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128779276-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-</head> 
+  gtag('config', 'UA-128779276-2');
+</script>
+
+</head>
 
 <body>
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
+
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
+
 
     <h2>Read our Reviews!</h2>
-    
+
     <div id="reviewSection">
-    
-        
+
+
     </div>
-    
-    
-    
-    
-    
+
+
+
+
+
 </body>
 
 
 <script>
- 
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
@@ -56,10 +65,10 @@ var db = firebase.firestore();
 db.settings({
   timestampsInSnapshots: true
 });
-    
+
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     db.collection("reviews")
     .get()
     .then(function(querySnapshot) {
@@ -67,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var dates = [];
         var reviews = [];
         var starVal = [];
-        
+
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             names.push(doc.data().name);
@@ -75,27 +84,27 @@ document.addEventListener("DOMContentLoaded", function() {
             reviews.push(doc.data().comment);
             starVal.push(doc.data().stars);
         });
-        
-        
+
+
         var arrayLength = names.length;
-       
-        
+
+
         for (var i = 0; i < arrayLength; i++) {
             var div = document.getElementById("reviewSection");
-            
+
             var name = ("Reviewer: " + names[i]);
-            var date = (dates[i]); 
-            var review = ("\"<em>" + reviews[i] + "</em>\""); 
-            var stars = ("Stars: " + starVal[i]); 
-            
+            var date = (dates[i]);
+            var review = ("\"<em>" + reviews[i] + "</em>\"");
+            var stars = ("Stars: " + starVal[i]);
+
             div.innerHTML += (name + "<br>" + review + "<br>" + stars + "<br><br><br>" );
         }
         div.innerHTML += ("<a href=\"suggestions.html\"><em>Don't forget to leave us a review!</em></a>");
-        
+
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
 });
-    
+
 </script>

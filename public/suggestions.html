@@ -10,15 +10,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-       
+
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128779276-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-</head> 
+  gtag('config', 'UA-128779276-2');
+</script>
+
+</head>
 
 <body>
     <img onclick="window.location.href='menu.html'"id="backButton" src="css/images/backInactive.png">
-    
+
     <h2>Review The Reef</h2>
     <div id="reviewSection">
         <form>
@@ -31,26 +40,26 @@
             <p>How Many Stars?</p>
             <input type="text" id="stars">
             <br>     <br>
-              
+
     </form>
     <p id="errorBox"></p>
     <p id="successBox"></p>
     <button id="submitButton" onclick="addReview()">Submit</button>
-    
+
     </div>
-    
- 
-        
-    
-    
- 
-  
-    
-    
+
+
+
+
+
+
+
+
+
 </body>
 
 <script>
-    
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCWb0iGJ2V7HW8nfcsN-oAVkbJRGDtr-kk",
@@ -69,10 +78,10 @@ var db = firebase.firestore();
 db.settings({
   timestampsInSnapshots: true
 });
-    
+
 function addReview(){
     var timeStamp = Date.now();
-    
+
     if ($("#bigBox").val() == "") {
         $("#errorBox").html("Please enter a review");
     } else if ($("#stars").val() == "") {
@@ -92,10 +101,10 @@ function addReview(){
         window.alert("Thanks for posting a review! - The Reeflings");
 
     }
-    
-  
-}
-    
 
-    
+
+}
+
+
+
 </script>
