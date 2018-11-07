@@ -30,7 +30,7 @@
 
     <h2>Review The Reef</h2>
     <div id="reviewSection">
-        <form>
+        <form id="reviewForm">
             <p>Name</p>
             <input id="name" type="text">
             <p>Review</p>
@@ -43,7 +43,7 @@
 
     </form>
     <p id="errorBox"></p>
-    <p id="successBox"></p>
+    <p id="successBox" style="color:green;"></p>
     <button id="submitButton" onclick="addReview()">Submit</button>
 
     </div>
@@ -97,6 +97,10 @@ function addReview(){
         timestamp: timeStamp
         })
         console.log("success");
+
+        $("#reviewForm").hide();
+        $("#submitButton").hide();
+
         $("#successBox").html("Thanks for posting a review!");
         window.alert("Thanks for posting a review! - The Reeflings");
 

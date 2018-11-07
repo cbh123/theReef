@@ -30,9 +30,11 @@
     <h2>Book A Visit</h2>
     <br>
     <br>
+    <p id="errorBox" style="text-align:center;"></p>
+    <p id="successBox" style="text-align:center;"></p>
     <div id="reviewSection">
 
-        <form>
+        <form id="bookingForm">
             <p>Name</p>
             <input type="text" id="name">
             <p>Email</p>
@@ -58,14 +60,15 @@
 
     </form>
 
-        <p id="errorBox"></p>
-        <p id="successBox"></p>
+
     <button id="submitButton" onclick="addStay()">Submit</button>
 
 
 
 
     </div>
+
+
 </body>
 
 <script>
@@ -114,9 +117,14 @@ function addStay(){
       timestamp: timeStamp
     });
 
-    // success infro
+    // success info
     console.log("success");
+    $("#reviewSection").hide();
+
     $("#successBox").html("Thanks for booking a visit!");
+
+    // hide booking info
+
 
     // window alert
     window.alert("Thank you for booking a stay. We shall see you on " + $("#date").val() + ". Please note that the current password is: TENTACLES.");
